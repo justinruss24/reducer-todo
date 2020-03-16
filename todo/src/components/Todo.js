@@ -10,24 +10,46 @@ const Todo = () => {
   };
 
   return (
-    <div className="todo-page">
-      <div className="todo-form">
-        <input
-          type="text"
-          name="newTodoText"
-          value={newTodo}
-          onChange={handleChanges}
-        />
-        <button
-          onClick={() =>
-            dispatch({
-              type: "ADD_ITEM",
-              payload: newTodo
-            })
-          }
-        >
-          Add Item
-        </button>
+    <div className="container">
+      <div className="todo-page">
+        <div className="todo-form">
+            <h1>~*Get 'em Done!*~</h1>
+          <input
+            type="text"
+            name="newTodoText"
+            value={newTodo}
+            onChange={handleChanges}
+          />
+          <button
+            onClick={() =>
+              dispatch({
+                type: "ADD_ITEM",
+                payload: newTodo
+              })
+            }
+          >
+            Add Item
+          </button>
+        </div>
+        <div className="todo-list">
+          <ul>
+            {state.map(item => (
+              <li>
+                <div
+                  className={`todo-item ${item.completed ? "done" : ""}`}
+                  onClick={() =>
+                    dispatch({
+                      type: "TOGGLE_COMPLETED",
+                      payload: item.id
+                    })
+                  }
+                >
+                  {item.item}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
         <button
           onClick={() =>
             dispatch({
@@ -37,25 +59,6 @@ const Todo = () => {
         >
           Clear Completed Tasks
         </button>
-      </div>
-      <div className="todo-list">
-        <ul>
-          {state.map(item => (
-            <li>
-              <div
-                className={`todo-item ${item.completed ? "done" : ""}`}
-                onClick={() =>
-                  dispatch({
-                    type: "TOGGLE_COMPLETED",
-                    payload: item.id
-                  })
-                }
-              >
-                {item.item}
-              </div>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

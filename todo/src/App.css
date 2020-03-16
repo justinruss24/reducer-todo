@@ -13,6 +13,11 @@
   }
 }
 
+h1 {
+  font-size: 1.6rem;
+  
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,15 +41,26 @@
     transform: rotate(360deg);
   }
 }
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .todo-page{
+  width: 40%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  border: 1px solid blue;
+  margin: 5%;
+  padding: 3%;
 }
 
 .todo-form{
-  max-width: 50%;
+  width: 80%;
+  flex-direction: row;
+
 }
 
 .todo-list{
